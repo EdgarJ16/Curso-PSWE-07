@@ -1,50 +1,29 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# Curso-PSWE-07 Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Simplicity First (YAGNI)
+Code MUST implement only what the spec requires, using the simplest solution that works. Features, abstractions, configuration options, and dependencies MUST NOT be added "just in case"; any added complexity MUST be justified in writing in the plan (Complexity Tracking).
+*Rationale: unrequested code is cost without value.*
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Simple, Clear Design
+Functions and modules MUST be small with a single responsibility, and names MUST reveal intent. Abstractions MUST NOT be built for a single use, duplication is removed only when it is real, and optimization MUST NOT be done prematurely.
+*Rationale: small, readable units are easier to test, change, and review.*
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Structured Architecture
+Code MUST be separated into three layers: UI (screens and components), application logic (task operations), and persistence (storage). Dependencies MUST point one way only: UI → logic → persistence. UI code MUST NOT access storage directly, and persistence MUST sit behind a small interface so it can be replaced or faked in tests.
+*Rationale: clear boundaries keep each layer replaceable and testable in isolation.*
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Test-Driven Development (NON-NEGOTIABLE)
+Development MUST follow Red-Green-Refactor: write a failing test, make it pass with the minimum code, then refactor. Production code MUST NOT exist without a test that required it. Business logic MUST have unit tests, and each user story MUST have at least one acceptance test mirroring its acceptance scenarios. Tests MUST be fast and independent.
+*Rationale: tests written first prove the behavior and keep the design honest.*
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
-
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
-
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### V. Spec Is the Source of Truth
+Every implementation task MUST trace back to a requirement in the spec, and anything not in the spec is out of scope and MUST NOT be implemented. Ambiguous requirements MUST be clarified before implementation.
+*Rationale: building from one agreed source prevents drift and scope creep.*
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution supersedes other practices. Plans MUST pass a Constitution Check against these principles, and reviews MUST verify compliance. Amendments require a written change, and versions follow semantic versioning: MAJOR for removed or redefined principles, MINOR for added principles or material expansions, PATCH for clarifications.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-10-22 | **Last Amended**: 2026-10-22
